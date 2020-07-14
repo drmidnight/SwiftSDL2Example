@@ -1,14 +1,13 @@
 import SwiftSDL2
-SDL.initialize([.video])
-SDL.initialize(imageSupport: [.png])
+
 // Initialize subsystems
 class SDLExample {
     var renderer: Renderer
     let window: Window
 
     init(_ title: String = "SDL2") {
-      
-
+        SDL.initialize([.video])
+        SDL.initialize(imageSupport: [.png])
         self.window = Window(title: title, rect: Rect(x: 10, y: 10, w: 1024, h: 789), flags: [.openGL, .resizeable])
         self.renderer = Renderer(window: self.window, flags: [.vsync])
     }
@@ -31,11 +30,6 @@ class SDLExample {
 let example = SDLExample("SDL2 Example")
 
 example.main {
-//    let imageTexture = Texture(renderer: example.renderer, image: "image.png")
-
-//    let font = Font( "fontFile.ttf", size: 16 )
-//    let fontTextTest = font.renderText("Hello, world!")
-//    let fontTextTestTexture = Texture(renderer: example.renderer, surface: fontTextTest)
     var quit = false
 
     while !quit {
