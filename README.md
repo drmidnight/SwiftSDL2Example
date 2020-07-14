@@ -1,4 +1,4 @@
-# SwiftSDL2TestProject
+# SwiftSDL2Example
 
 A simple example that utilizes [SwiftSDL2](https://github.com/drmidnight/SwiftSDL2)
 
