@@ -4,25 +4,20 @@
 import PackageDescription
 
 let package = Package(
-    name: "SwiftSDL2TestProject",
-    products: [
-        // Products define the executables and libraries produced by a package, and make them visible to other packages.
-        .library(
-            name: "SwiftSDL2TestProject",
-            targets: ["SwiftSDL2TestProject"]),
-    ],
+    name: "SwiftSDL2Example",
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+        .package(url: "https://github.com/drmidnight/SwiftSDL2.git", from: "0.0.16"),
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
-            name: "SwiftSDL2TestProject",
-            dependencies: []),
-        .testTarget(
-            name: "SwiftSDL2TestProjectTests",
-            dependencies: ["SwiftSDL2TestProject"]),
+            name: "SwiftSDL2Example",
+            dependencies: ["SwiftSDL2"],
+            linkerSettings: [
+                .unsafeFlags(["-L", "/usr/local/Cellar/sdl2/2.0.12_1/lib/"], .when(platforms: [.macOS])),
+                .unsafeFlags(["-L", "/usr/local/Cellar/sdl2_image/2.0.5/lib/"], .when(platforms: [.macOS])),
+                .unsafeFlags(["-L", "/usr/local/Cellar/sdl2_ttf/2.0.15/lib/"], .when(platforms: [.macOS])),
+            ]
+        )
     ]
+    
 )
